@@ -12,6 +12,20 @@ export class ChartComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Input() ordersChartData: any;
 
   private alive = true;
+  public labels = [
+    {
+      title: 'chart.donations',
+      color: 'rgb(0, 214, 143)'
+    },
+    {
+      title: 'chart.subsidiary',
+      color: 'rgb(51, 102, 255)'
+    },
+    {
+      title: 'chart.transactions',
+      color: 'rgb(237, 241, 247)'
+    }
+  ]
 
   echartsIntance: any;
   option: any;
@@ -105,7 +119,6 @@ export class ChartComponent implements AfterViewInit, OnDestroy, OnChanges {
           show: false,
         },
         splitLine: {
-
           lineStyle: {
             color: eTheme.yAxisSplitLine,
             width: '1',

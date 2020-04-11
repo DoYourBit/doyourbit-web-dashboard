@@ -1,2 +1,7 @@
-<div echarts [options]="option" [merge]="option" class="echart" (chartInit)="onChartInit($event)">
+<div class="legend-container">
+    <div *ngFor="let label of labels" class="legend">
+        <div class="legend-item-color" [style.background]="label.color"></div>
+        <div class="legend-title">{{ label.title | translate }}</div>
+    </div>
 </div>
+<div echarts [options]="option" [merge]="option" class="echart" (chartInit)="onChartInit($event)"></div>

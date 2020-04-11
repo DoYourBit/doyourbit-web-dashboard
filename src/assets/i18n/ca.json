@@ -20,5 +20,10 @@
     "ticket": {
         "title": "Detall del tiquet",
         "total" : "Total"
+    },
+    "chart": {
+        "donations": "Donacions",
+        "subsidiary": "Subsidis",
+        "transactions": "Compres"
     }
 }

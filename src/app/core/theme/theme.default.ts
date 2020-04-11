@@ -105,7 +105,7 @@ export const DEFAULT_THEME = {
       shadowBlur: '0',
 
       axisTextColor: baseThemeVariables.fgText,
-      axisFontSize: '12',
+      axisFontSize: '8',
 
       tooltipBg: baseThemeVariables.bg,
       tooltipBorderColor: baseThemeVariables.border2,
@@ -158,10 +158,10 @@ export const DEFAULT_THEME = {
       tooltipExtraCss: 'border-radius: 10px; padding: 8px 24px;',
       tooltipTextColor: baseThemeVariables.fgText,
       tooltipFontWeight: 'normal',
-      tooltipFontSize: '20',
+      tooltipFontSize: '12',
 
       axisLineColor: baseThemeVariables.border4,
-      axisFontSize: '16',
+      axisFontSize: '12',
       axisTextColor: baseThemeVariables.fg,
       yAxisSplitLine: baseThemeVariables.separator,
 

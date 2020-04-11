@@ -3,3 +3,32 @@
     height: 250px;
     width: 100%;
 }
+
+.legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 12px;
+    }
+  }
+
+  .legend-item-color {
+    min-width: 15px;
+    min-height: 15px;
+    border-radius: 0.2rem;
+  }
+
+  .legend-title {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    white-space: nowrap;
+  }

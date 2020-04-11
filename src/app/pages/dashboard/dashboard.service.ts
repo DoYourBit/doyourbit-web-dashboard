@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 import TicketEntity from 'src/app/core/entity/ticket.entity';
 import ProductEntity from 'src/app/core/entity/product.entity';
 
+import * as moment from 'moment';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -113,16 +115,18 @@ export class DashboardService {
     }
 
     public getChartData() {
+        let days = [
+            moment().subtract(6, 'days').startOf('day'),
+            moment().subtract(5, 'days').startOf('day'),
+            moment().subtract(4, 'days').startOf('day'),
+            moment().subtract(3, 'days').startOf('day'),
+            moment().subtract(2, 'days').startOf('day'),
+            moment().subtract(1, 'days').startOf('day'),
+            moment().startOf('day')
+        ]
+
         return of({
-            chartLabel: this.getDataLabels(42, [
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-            ]),
+            chartLabel: this.getDataLabels(42, days.map(day => day.format("ddd"))),
             linesData: [
                 [
                     190, 269, 327, 366, 389, 398,

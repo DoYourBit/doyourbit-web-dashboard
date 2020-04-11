@@ -3,6 +3,8 @@ import { Web3Service } from 'src/app/core/web3.service';
 import { DashboardService } from './dashboard.service';
 import { NbDialogService } from '@nebular/theme';
 import { TicketDetailComponent } from 'src/app/shared/components/ticket-detail/ticket-detail.component';
+import { forkJoin } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +20,11 @@ export class DashboardComponent implements OnInit {
   public subsidiaryList = [];
   public inOutList = [];
   public transactionList = [];
-  public chartData;
+  public donationsList = [];
+  public chartData = {
+    chartLabel: [],
+    linesData: []
+  };
 
   constructor(
     public dashboardService: DashboardService,
@@ -27,40 +33,27 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.web3Service.getTotalSupply()
-      .subscribe(res => {
-        this.totalSupply = res.toFixed(2) + '€';
-      })
+    forkJoin([
+      this.web3Service.getTotalSupply(),
+      this.web3Service.getDonationCenterBalance(),
+      this.web3Service.getMovingBalance(),
+      this.dashboardService.getSubsidiaryList(),
+      this.dashboardService.getTransactions(),
+      this.dashboardService.getChartData(),
+      this.dashboardService.getInOutList(),
+      this.dashboardService.getDonationsList()
+    ]).subscribe((result: any[]) => {
+      this.totalSupply = result[0].toFixed(2) + '€';
+      this.donationBalance = result[1].toFixed(2) + '€';
+      this.movingBalance = result[2].toFixed(2) + '€';
+      this.subsidiaryList = result[3];
+      this.transactionList = result[4];
+      this.chartData = result[5];
+      this.inOutList = result[6];
+      this.donationsList = result[7]
 
-    this.web3Service.getDonationCenterBalance()
-      .subscribe(res => {
-        this.donationBalance = res.toFixed(2) + '€';
-      })
-
-    this.web3Service.getMovingBalance()
-      .subscribe(res => {
-        this.movingBalance = res.toFixed(2) + '€';
-      })
-
-    this.dashboardService.getSubsidiaryList()
-      .subscribe(res => {
-        this.subsidiaryList = res;
-      })
-
-    this.dashboardService.getTransactions()
-      .subscribe(res => {
-        this.transactionList = res;
-      })
-
-    this.dashboardService.getChartData()
-      .subscribe(res => {
-        this.chartData = res;
-      })
-
-    this.dashboardService.getInOutList()
-      .subscribe(res => {
-        this.inOutList = res;
-      })
+      this.calculateChartData();
+    })
   }
 
   public onTransactionClick(transaction) {
@@ -71,8 +64,87 @@ export class DashboardComponent implements OnInit {
             ticket: res
           }
         });
-        
       })
+  }
+
+  private calculateChartData() {
+    let days = [
+      moment().subtract(6, 'days').startOf('day'),
+      moment().subtract(5, 'days').startOf('day'),
+      moment().subtract(4, 'days').startOf('day'),
+      moment().subtract(3, 'days').startOf('day'),
+      moment().subtract(2, 'days').startOf('day'),
+      moment().subtract(1, 'days').startOf('day'),
+      moment().startOf('day')
+    ]
+
+    let transactions = this.getTransactionsCount(days, this.transactionList);
+    let subsidies = this.getSubsidyCount(days, this.subsidiaryList);
+    let donations = this.getDonationsCount(days, this.donationsList);
+
+    console.log(transactions, subsidies, donations)
+
+    this.chartData = {
+      chartLabel: this.getDataLabels(7, days.map(day => day.format("ddd"))),
+      linesData: [
+        transactions,
+        subsidies,
+        donations,
+      ],
+    }
+  }
+
+  private getDataLabels(nPoints: number, labelsArray: string[]): string[] {
+    const labelsArrayLength = labelsArray.length;
+    const step = Math.round(nPoints / labelsArrayLength);
+
+    return Array.from(Array(nPoints)).map((item, index) => {
+      const dataIndex = Math.round(index / step);
+
+      return index % step === 0 ? labelsArray[dataIndex] : '';
+    });
+  }
+
+  private getTransactionsCount(days, transactions: any[]) {
+    return days.map(day => {
+      let count = 0;
+  
+      transactions.map(transaction => {
+        if (moment(transaction.date).isSame(day, 'day')) {
+          count += parseFloat(transaction.amount);
+        }
+      })
+
+      return count;
+    })
+  }
+
+  private getSubsidyCount(days, subsidies: any[]) {
+    return days.map(day => {
+      let count = 0;
+  
+      subsidies.map(subsidy => {
+        if (moment(subsidy.date).isSame(day, 'day')) {
+          count += parseFloat(subsidy.amount);
+        }
+      })
+
+      return count;
+    })
+  }
+
+  private getDonationsCount(days, donations: any[]) {
+    return days.map(day => {
+      let count = 0;
+  
+      donations.map(donation => {
+        if (moment(donation.date).isSame(day, 'day')) {
+          count += parseFloat(donation.amount);
+        }
+      })
+
+      return count;
+    })
   }
 
 }

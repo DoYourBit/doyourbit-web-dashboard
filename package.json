@@ -28,6 +28,7 @@
     "bootstrap": "^4.4.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.2",
+    "moment": "^2.24.0",
     "ngx-echarts": "^4.2.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

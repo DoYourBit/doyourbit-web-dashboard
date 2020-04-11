@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "do-your-bit-dashboard",
     "public": "dist/hackovid-dyb-web-dashboard",
     "ignore": [
       "firebase.json",
