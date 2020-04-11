@@ -1,0 +1,14 @@
+<nb-card class="ticket">
+    <nb-card-header>
+        <h3> {{ ticket?.buyer?.name }} </h3>
+        <p> #{{ticket?.id}} - {{ ticket?.date | date:'yyyy/MM/dd HH:mm' }} </p>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item *ngFor="let product of ticket?.products"> {{ product.count}}x {{ product.name }}
+            </nb-list-item>
+        </nb-list>
+
+        <div><b>{{ 'ticket.total' | translate}}:</b> {{ ticket?.total }}€</div>
+    </nb-card-body>
+</nb-card>

@@ -10,7 +10,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbIconModule, NbCardModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbListModule, NbThemeService } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbIconModule, NbCardModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbListModule, NbThemeService, NbDialogModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DonateComponent } from './pages/dashboard/donate/donate.component';
@@ -53,7 +53,8 @@ import { ThemeModule } from './core/theme/theme.module';
     NbButtonModule,
     NbInputModule,
     NbSpinnerModule,
-    NbListModule
+    NbListModule,
+    NbDialogModule.forRoot()
   ],
   providers: [
     DashboardService,

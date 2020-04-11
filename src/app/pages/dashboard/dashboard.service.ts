@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { of, forkJoin } from 'rxjs';
 import { delay, map, catchError } from 'rxjs/internal/operators';
 import { Web3Service } from 'src/app/core/web3.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import TicketEntity from 'src/app/core/entity/ticket.entity';
+import ProductEntity from 'src/app/core/entity/product.entity';
 
 @Injectable({
     providedIn: 'root'
@@ -9,8 +13,33 @@ import { Web3Service } from 'src/app/core/web3.service';
 export class DashboardService {
 
     constructor(
+        public http: HttpClient,
         public web3Service: Web3Service
     ) { }
+
+    public getTicketByTxHash(txHash: string) {
+        return this.http.get(`${environment.apiUrl}/tickets?tx_hash=${txHash}`)
+            .pipe(
+                map((res: any) => {
+                    return new TicketEntity({
+                        id: res.id,
+                        transactionHash: res.tx_hash,
+                        buyer: {
+                          name: res.buyer
+                        },
+                        products: res.products.map(product => {
+                          return new ProductEntity({
+                            id: product.Product.product_id,
+                            name: product.Product.name,
+                            price: product.Product.price,
+                            count: product.amount
+                          })
+                        }),
+                        date: new Date(res.timestamp)
+                      })
+                })
+            )
+    }
 
     public getSubsidiaryList() {
         return this.web3Service.getSubsidies()

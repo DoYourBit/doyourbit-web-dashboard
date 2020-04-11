@@ -143,6 +143,7 @@ export class Web3Service {
               buyer: event.returnValues[0],
               seller: event.returnValues[1],
               amount: (event.returnValues[2] / 100).toFixed(2),
+              transactionHash: event.transactionHash,
               date: new Date()
             }
           })

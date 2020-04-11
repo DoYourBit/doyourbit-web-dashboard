@@ -43,7 +43,7 @@
                             {{ 'dashboard.transaction-list' | translate }}
                         </nb-card-header>
                         <nb-list>
-                            <nb-list-item *ngFor="let transaction of transactionList">
+                            <nb-list-item *ngFor="let transaction of transactionList" (click)="onTransactionClick(transaction)">
                                 <div class="dashboard-transactions-main">
                                     <span>{{ transaction.buyer | slice:0:18 }}... &rarr; {{ transaction.seller | slice:0:18 }}... </span>
                                     <p>{{ transaction.date | date:'dd-MM-yyyy HH:mm' }}</p>

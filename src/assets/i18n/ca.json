@@ -16,5 +16,9 @@
         "submit": "Aportar",
         "success": "Donació realitzada amb èxit",
         "error": "S'ha produit un error amb la teva donació"
+    },
+    "ticket": {
+        "title": "Detall del tiquet",
+        "total" : "Total"
     }
 }

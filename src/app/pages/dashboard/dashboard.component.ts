@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Web3Service } from 'src/app/core/web3.service';
 import { DashboardService } from './dashboard.service';
+import { NbDialogService } from '@nebular/theme';
+import { TicketDetailComponent } from 'src/app/shared/components/ticket-detail/ticket-detail.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +22,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public dashboardService: DashboardService,
-    public web3Service: Web3Service
+    public web3Service: Web3Service,
+    public dialogService: NbDialogService
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +60,18 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getInOutList()
       .subscribe(res => {
         this.inOutList = res;
+      })
+  }
+
+  public onTransactionClick(transaction) {
+    this.dashboardService.getTicketByTxHash(transaction.transactionHash)
+      .subscribe(res => {
+        this.dialogService.open(TicketDetailComponent, {
+          context: {
+            ticket: res
+          }
+        });
+        
       })
   }
 
