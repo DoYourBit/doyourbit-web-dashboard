@@ -21,13 +21,15 @@ import { FormsModule } from '@angular/forms';
 import { DashboardService } from './pages/dashboard/dashboard.service';
 import { ChartComponent } from './pages/dashboard/chart/chart.component';
 import { ThemeModule } from './core/theme/theme.module';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     DonateComponent,
-    ChartComponent
+    ChartComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     CommonModule,

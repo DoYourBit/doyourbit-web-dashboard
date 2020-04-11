@@ -25,5 +25,8 @@
         "donations": "Donacions",
         "subsidiary": "Subsidis",
         "transactions": "Compres"
+    },
+    "privacy": {
+        "title": "Política de privacitat"
     }
 }
