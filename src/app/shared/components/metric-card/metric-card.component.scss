@@ -1,0 +1,74 @@
+nb-card {
+    flex-direction: row;
+    align-items: center;
+    height: 5rem;
+    overflow: visible;
+    margin-bottom: 0.6rem;
+
+    .icon-container {
+      height: 100%;
+      
+      padding: .625rem;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 100%;
+      font-size: 3.2rem;
+      border-radius: nb-theme(card-border-radius);
+      transition: width 0.4s ease;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+
+      border-radius: .25rem;
+      background-image: linear-gradient(90deg,#598bff,#36f);    
+
+      & > .eva {
+        width: 2.6rem;
+        height: 2.6rem;
+        vertical-align: middle;
+        fill: white;
+      }
+    }
+
+    .details {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 0 0.5rem 0 1.15rem;
+      border-left: 1px solid transparent;
+    }
+
+    .label {
+      color: #222b45;
+      font-family: Open Sans,sans-serif;
+      font-size: .8125rem;
+      font-weight: 400;
+      line-height: 1.125rem;
+    }
+
+    .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .actions {
+      padding: 0 1.15rem 0 0.5rem;
+    }
+
+    [nbButton] {
+      padding: 1.5rem 1.2rem;
+      font-size: .8rem;
+
+      background-image: linear-gradient(90deg,#ff708d,#ff3d71) !important;
+      border: none !important;
+      box-shadow: 0 0 0 0 #db2c66, 0 0 0 0 #b81d5b, 0 0 transparent !important;
+      color: #fff !important;
+    }
+  }

@@ -1,0 +1,133 @@
+nb-card {
+    flex-direction: row;
+    align-items: center;
+    height: 5rem;
+    overflow: visible;
+
+    margin-bottom: 0.6rem;
+
+    .icon-container {
+      height: 100%;
+      
+      padding: .625rem;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 7rem;
+      height: 100%;
+      font-size: 3.2rem;
+      border-radius: nb-theme(card-border-radius);
+      transition: width 0.4s ease;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+
+      border-radius: .25rem;
+      background-image: linear-gradient(90deg,#598bff,#36f);    
+
+      & > .eva {
+        width: 2.6rem;
+        height: 2.6rem;
+        vertical-align: middle;
+        fill: white;
+      }
+    }
+
+    .details {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 0 0.5rem 0 1.15rem;
+      border-left: 1px solid transparent;
+    }
+
+    .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .status {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .actions {
+      padding: 0 1.15rem 0 0.5rem;
+    }
+
+    [nbButton] {
+      padding: 0.4375rem 1.875rem !important;
+      font-size: .8rem;
+
+      background-image: linear-gradient(90deg,#ff708d,#ff3d71) !important;
+      border: none !important;
+      box-shadow: 0 0 0 0 #db2c66, 0 0 0 0 #b81d5b, 0 0 transparent !important;
+      color: #fff !important;
+    }
+  }
+
+.donation-popup {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  background: white;
+  z-index: 999;
+
+  transition: right 0.5s ease-out;
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-close {
+    cursor: pointer;
+    
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  &-info {
+    border-radius: 0.25rem;
+    border: 0.0625rem solid #e4e9f2;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  & > input {
+    margin: 32px 0;
+  }
+
+  & > button {
+    margin: 32px 0;
+    width: 100%;
+  }
+
+  &-result {
+    font-size: .9rem;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+
+  transition: display 0.5s ease-out;
+}

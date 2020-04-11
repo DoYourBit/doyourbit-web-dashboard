@@ -1,0 +1,17 @@
+{
+    "dashboard": {
+        "subsidiary-list": "Subsidiary list",
+        "movements": "Movements",
+        "transaction-list": "Transaction list"
+    },
+    "donate": {
+        "title": "Start donating",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies sodales malesuada. Quisque eu dolor lacinia, tempor neque et, maximus justo. Suspendisse faucibus mollis augue vel tempus. Sed vitae tellus justo. Mauris augue mauris, porttitor sit amet fermentum eu, malesuada in massa.",
+        "donate": "Donate",
+        "amount-full": "Amount in €",
+        "amount": "Amount",
+        "submit": "Submit",
+        "success": "Donation received successfully",
+        "error": "There was an error with your donation"
+    }
+}

@@ -1,0 +1,27 @@
+<nb-card>
+    <div class="icon-container hidden-sm-down">
+        <div class="icon" [innerHTML]="'alert-circle-outline' | eva: {width: '2.5rem', height: '2.5rem', fill: 'white'}"></div>
+    </div>
+    <div class="details">
+        <div class="title">{{ 'donate.title' | translate }}</div>
+        <div class="status"> {{ account }} </div>
+    </div>
+    <div class="actions">
+        <a nbButton class="btn-danger" size="small" (click)="showPopup()">{{ 'donate.donate' | translate }}</a>
+    </div>
+</nb-card>
+
+<div class="donation-popup" [style.right]="showing ? 0 : '-450px'">
+    <div (click)="dismissPopup()" class="donation-popup-close" [innerHTML]="'close-outline' | eva: {width: '25px', height: '25px', fill: 'black'}"></div>
+    <div class="donation-popup-info">
+        {{ 'donate.info' | translate }}
+    </div>
+    <div class="form-group" style="width: 100%;">
+        <label for="amount" class="label">{{ 'donate.amount-full' | translate }}</label>
+        <input type="number" nbInput fullWidth id="amount" [(ngModel)]="amount" [placeholder]="'donate.amount' | translate">
+    </div>
+    <button [disabled]="!amount || loading" [nbSpinner]="loading" nbSpinnerStatus="primary" status="primary" nbButton (click)="submitDonation()"> {{ 'donate.submit' | translate }} </button>
+    <span *ngIf="success === true" class="donation-popup-result">{{ 'donate.success' | translate }}</span>
+    <span *ngIf="success === false" class="donation-popup-result">{{ 'donate.error' | translate }}</span>
+</div>
+<div class="backdrop" [hidden]="!showing" (click)="dismissPopup()"></div>

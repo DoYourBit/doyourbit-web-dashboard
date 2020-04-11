@@ -1,0 +1,79 @@
+<nb-layout class="dashboard" withScroll>
+    <nb-layout-column class="dashboard-container">
+        <div class="row">
+            <app-donate class="col-12"></app-donate>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3">
+                <metric-card [value]="totalSupply" [label]="'dashboard.metric.1' | translate" [icon]="'arrow-circle-up-outline'"></metric-card>
+            </div>
+            <div class="col-12 col-md-4 col-lg-6">
+                <metric-card [value]="movingBalance" [label]="'dashboard.metric.2' | translate" [icon]="'arrow-circle-up-outline'"></metric-card>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3">
+                <metric-card [value]="donationBalance" [label]="'dashboard.metric.3' | translate" [icon]="'arrow-circle-up-outline'"></metric-card>
+            </div>
+        </div>
+        <div class="row dashboard-content">
+            <div class="col-3">
+                <nb-card class="dashboard-in">
+                    <nb-card-header>
+                        {{ 'dashboard.movements' | translate }}
+                    </nb-card-header>
+                    <nb-list>
+                        <nb-list-item *ngFor="let subsidiary of inOutList">
+                            <div class="dashboard-subsidy-main">
+                                <span>{{ subsidiary.address | slice:0:18 }}...</span>
+                                <p>{{ subsidiary.date | date:'dd-MM-yyyy HH:mm' }}</p>
+                            </div>
+                            <div class="dashboard-subsidy-amount" [style.color]="subsidiary.type === 'donation' ? '#00d68f' : '#ff3d71'">
+                                {{ subsidiary.amount }}€
+                            </div>
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card>
+            </div>
+            <div class="col-6">
+                <div class="row dashboard-center">
+                    <nb-card class="col-12 dashboard-chart">
+                        <app-chart [ordersChartData]="chartData"></app-chart>
+                    </nb-card>
+                    <nb-card class="col-12 dashboard-transactions">
+                        <nb-card-header>
+                            {{ 'dashboard.transaction-list' | translate }}
+                        </nb-card-header>
+                        <nb-list>
+                            <nb-list-item *ngFor="let transaction of transactionList">
+                                <div class="dashboard-transactions-main">
+                                    <span>{{ transaction.buyer | slice:0:18 }}... &rarr; {{ transaction.seller | slice:0:18 }}... </span>
+                                    <p>{{ transaction.date | date:'dd-MM-yyyy HH:mm' }}</p>
+                                </div>
+                                <div class="dashboard-transactions-amount">
+                                    {{ transaction.amount }}€
+                                </div>
+                            </nb-list-item>
+                        </nb-list>
+                    </nb-card >
+                </div>
+            </div>
+            <div class="col-3">
+                <nb-card class="dashboard-subsidy">
+                    <nb-card-header>
+                        {{ 'dashboard.subsidiary-list' | translate }}
+                    </nb-card-header>
+                    <nb-list>
+                        <nb-list-item *ngFor="let subsidiary of subsidiaryList">
+                            <div class="dashboard-subsidy-main">
+                                <span>{{ subsidiary.address | slice:0:18 }}...</span>
+                                <p>{{ subsidiary.date | date:'dd-MM-yyyy HH:mm' }}</p>
+                            </div>
+                            <div class="dashboard-subsidy-amount">
+                                {{ subsidiary.amount }}€
+                            </div>
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card>
+            </div>
+        </div>
+    </nb-layout-column>
+</nb-layout>

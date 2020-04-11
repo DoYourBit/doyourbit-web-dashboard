@@ -1,0 +1,20 @@
+{
+    "dashboard": {
+        "subsidiary-list": "Subsidis",
+        "movements": "Donacions i bescanvis",
+        "transaction-list": "Compres realitzades",
+        "metric.1": "Capital acumulat",
+        "metric.2": "Capital en circulació",
+        "metric.3": "Capital disponible"
+    },
+    "donate": {
+        "title": "Aporta el teu gra de sorra",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies sodales malesuada. Quisque eu dolor lacinia, tempor neque et, maximus justo. Suspendisse faucibus mollis augue vel tempus. Sed vitae tellus justo. Mauris augue mauris, porttitor sit amet fermentum eu, malesuada in massa.",
+        "donate": "Donar",
+        "amount-full": "Donatiu en €",
+        "amount": "Donatiu",
+        "submit": "Aportar",
+        "success": "Donació realitzada amb èxit",
+        "error": "S'ha produit un error amb la teva donació"
+    }
+}

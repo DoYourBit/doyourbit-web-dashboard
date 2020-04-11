@@ -1,0 +1,123 @@
+.dashboard {
+    &-container {
+        display: flex;
+        flex-direction: column;
+
+        padding-top: 0.75rem !important;
+    }
+
+    &-content {
+        & > div {
+            height: calc(100vh - 208px);
+            min-height: 450px;
+        }
+    }
+
+    nb-card {
+        margin: 0;
+    }
+
+    &-in {
+        height: 100%;
+
+        nb-list-item {
+            font-size: 0.8rem;
+            font-weight: 700;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-main {
+            flex: 1;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+
+            & > p {
+                margin: 0;
+                font-size: 0.7rem;
+            }
+        }
+
+        &-amount {
+            padding-left: 32px;
+            color: #00d68f;
+
+        }
+    }
+    
+    &-center {
+        margin: 0;
+        height: 100%;
+    }
+
+    &-chart {
+        height: 250px;
+        margin-bottom: 5px !important;
+    }
+
+    &-transactions {
+        margin-top: 5px !important;
+        height: calc(100% - 260px);
+
+        nb-list-item {
+            font-size: 0.8rem;
+            font-weight: 700;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-amount {
+            padding-left: 32px;
+            color: #ff3d71;
+
+        }
+
+        &-main {
+            flex: 1;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+
+            & > p {
+                margin: 0;
+                font-size: 0.7rem;
+            }
+        }
+    }
+
+    &-subsidy {
+        height: 100%;
+
+        nb-list-item {
+            font-size: 0.8rem;
+            font-weight: 700;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-main {
+            flex: 1;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+
+            & > p {
+                margin: 0;
+                font-size: 0.7rem;
+            }
+        }
+
+        &-amount {
+            padding-left: 32px;
+            color: #00d68f;
+
+        }
+    }
+}

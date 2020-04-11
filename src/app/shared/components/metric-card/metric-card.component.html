@@ -1,0 +1,9 @@
+<nb-card>
+    <div class="icon-container hidden-sm-down">
+        <div class="icon" [innerHTML]="icon | eva: {width: '3rem', height: '3rem', fill: 'white'}"></div>
+    </div>
+    <div class="details">
+        <div class="title">{{ value }}</div>
+        <div class="label"> {{ label | translate }} </div>
+    </div>
+</nb-card>
