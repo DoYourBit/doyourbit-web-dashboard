@@ -6,17 +6,11 @@ import { NbDialogRef } from '@nebular/theme';
   templateUrl: './ticket-detail.component.html',
   styleUrls: ['./ticket-detail.component.scss']
 })
-export class TicketDetailComponent implements OnInit {
+export class TicketDetailComponent {
 
   public ticket: any;
 
   constructor(
     public ref: NbDialogRef<any>
   ) { }
-
-  ngOnInit(): void {
-    console.log(this.ticket)
-  }
-
-
 }

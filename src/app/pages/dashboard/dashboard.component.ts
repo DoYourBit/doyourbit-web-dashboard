@@ -33,6 +33,12 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.fetchData();
+    }, 3500);
+  }
+
+  public fetchData() {
     forkJoin([
       this.web3Service.getTotalSupply(),
       this.web3Service.getDonationCenterBalance(),
@@ -81,8 +87,6 @@ export class DashboardComponent implements OnInit {
     let transactions = this.getTransactionsCount(days, this.transactionList);
     let subsidies = this.getSubsidyCount(days, this.subsidiaryList);
     let donations = this.getDonationsCount(days, this.donationsList);
-
-    console.log(transactions, subsidies, donations)
 
     this.chartData = {
       chartLabel: this.getDataLabels(7, days.map(day => day.format("ddd"))),

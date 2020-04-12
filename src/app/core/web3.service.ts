@@ -45,7 +45,6 @@ export class Web3Service {
     return from(this.send(this.donationCenterContract, this.donationCenterContract.methods.donate(amount * 100)))
       .pipe(
         switchMap(res => {
-          console.log(res)
           return from(this.waitTransaction(res.transactionHash));
         })
       )

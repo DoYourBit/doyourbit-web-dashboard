@@ -53,6 +53,7 @@ export class ChartComponent implements AfterViewInit, OnDestroy, OnChanges {
   }
 
   setOptions(eTheme) {
+    console.log(eTheme.axisLineColor)
     this.option = {
       grid: {
         left: 40,

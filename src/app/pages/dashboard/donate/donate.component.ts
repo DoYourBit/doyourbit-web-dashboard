@@ -33,10 +33,8 @@ export class DonateComponent {
 
   public submitDonation() {
     this.loading = true;
-    console.log(this.amount, this.amount * 100)
     this.web3Service.donate(this.amount)
       .subscribe(res => {
-        console.log(res)
         this.loading = false;
         this.success = true;
       }, err => {

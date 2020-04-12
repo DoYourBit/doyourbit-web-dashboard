@@ -16,9 +16,9 @@ export class ThemeModule {
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: 'dark',
           },
-          [ DEFAULT_THEME ],
+          [ DEFAULT_THEME, DEFAULT_THEME, DEFAULT_THEME, DEFAULT_THEME ],
         ).providers,
       ],
     };
